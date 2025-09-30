@@ -1,0 +1,131 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"YzPUEeHdXo\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Airplane Mode</span>\",\"col\":12}},{\"id\":\"tBshkVazHa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Airlines\",\"col\":3}},{\"id\":\"fXqLTkPzRb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Airplanes\",\"col\":3}},{\"id\":\"hKpQMzLnWe\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Flight Passengers\",\"col\":3}},{\"id\":\"jDrSvNmXtY\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Airplane Tickets\",\"col\":3}},{\"id\":\"kLmNoPqRsT\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"mNpQrStUvW\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"nOqRsTuVwX\",\"type\":\"card\",\"data\":{\"card_name\":\"Transactions\",\"col\":4}},{\"id\":\"oPrStUvWxY\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
+ "creation": "2025-09-30 14:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "airplane",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Airplane Mode",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Masters",
+   "link_count": 3,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Airline",
+   "link_count": 0,
+   "link_to": "Airline",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Airplane",
+   "link_count": 0,
+   "link_to": "Airplane",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Airport",
+   "link_count": 0,
+   "link_to": "Airport",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Transactions",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Flight Passenger",
+   "link_count": 0,
+   "link_to": "Flight Passenger",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Airplane Ticket",
+   "link_count": 0,
+   "link_to": "Airplane Ticket",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  }
+ ],
+ "modified": "2025-09-30 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Airport",
+ "name": "Airplane Mode",
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Airlines",
+   "link_to": "Airline",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Airplanes",
+   "link_to": "Airplane",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Flight Passengers",
+   "link_to": "Flight Passenger",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "label": "Airplane Tickets",
+   "link_to": "Airplane Ticket",
+   "type": "DocType"
+  }
+ ],
+ "title": "Airplane Mode"
+}
