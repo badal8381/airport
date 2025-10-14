@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "autoincrement",
  "creation": "2025-09-30 13:10:05.971242",
  "doctype": "DocType",
@@ -8,6 +7,7 @@
  "field_order": [
   "first_name",
   "last_name",
+  "full_name",
   "column_break_ygot",
   "date_of_birth"
  ],
@@ -34,6 +34,12 @@
    "fieldtype": "Date",
    "label": "Date Of Birth",
    "reqd": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
@@ -45,7 +51,7 @@
    "link_fieldname": "passenger"
   }
  ],
- "modified": "2025-09-30 13:11:50.180228",
+ "modified": "2025-10-13 16:14:40.822820",
  "modified_by": "Administrator",
  "module": "Airport",
  "name": "Flight Passenger",
@@ -71,5 +77,5 @@
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
- "title_field": "first_name"
+ "title_field": "full_name"
 }
