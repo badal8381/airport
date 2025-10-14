@@ -1,0 +1,24 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ doc.name }}{% endblock %}
+
+{% block page_content %}
+<div class="container my-5">
+      <h1>{{ doc.name }}</h1>
+
+      <div class="card mt-4">
+              <div class="card-body">
+                      <h3>Flight Details</h3>
+                      <ul class="list-unstyled mt-3">
+                              <li class="mb-2"><strong>Airline:</strong> {{ frappe.db.get_value("Airplane", doc.airplane, "airline") }}</li>
+                              <li class="mb-2"><strong>Route:</strong> {{ doc.source_airport_code }} → {{ doc.destination_airport_code }}</li>
+                              <li class="mb-2"><strong>Date of Departure:</strong> {{ frappe.utils.format_date(doc.date_of_departure, "d MMMM, YYYY") }}</li>
+                              <li class="mb-2"><strong>Time of Departure:</strong> {{ doc.time_of_departure }}</li>
+                              <li class="mb-2"><strong>Duration:</strong> {{ frappe.utils.format_duration(doc.duration) }}</li>
+                      </ul>
+
+                      <a href="/book-flight/new?flight={{ doc.name }}" class="btn btn-primary btn-lg mt-3">Book Flight</a>
+              </div>
+      </div>
+</div>
+{% endblock %}
