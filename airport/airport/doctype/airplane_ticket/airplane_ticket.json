@@ -7,20 +7,26 @@
  "field_order": [
   "passenger_details_section",
   "passenger",
-  "column_break_1",
-  "airport_details_section",
-  "source_airport",
-  "source_airport_code",
-  "column_break_2",
-  "destination_airport",
-  "destination_airport_code",
-  "flight_details_section",
-  "flight",
-  "departure_date",
-  "departure_time",
-  "column_break_3",
-  "duration_of_flight",
   "status",
+  "column_break_kdoq",
+  "flight",
+  "seat",
+  "section_break_eja8",
+  "source_airport_code",
+  "column_break_cyrp",
+  "destination_airport_code",
+  "section_break_zhdc",
+  "add_ons",
+  "section_break_csoo",
+  "flight_price",
+  "column_break_ltxr",
+  "total_amount",
+  "departure_details_section",
+  "date_of_departure",
+  "time_of_departure",
+  "column_break_abkv",
+  "duration",
+  "section_break_wela",
   "amended_from"
  ],
  "fields": [
@@ -38,82 +44,25 @@
    "reqd": 1
   },
   {
-   "fieldname": "column_break_1",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "airport_details_section",
-   "fieldtype": "Section Break",
-   "label": "Airport Details"
-  },
-  {
-   "fieldname": "source_airport",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Source Airport",
-   "options": "Airport",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "source_airport.code",
+   "fetch_from": "flight.source_airport_code",
    "fieldname": "source_airport_code",
    "fieldtype": "Data",
    "label": "Source Airport Code",
    "read_only": 1
   },
   {
-   "fieldname": "column_break_2",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "destination_airport",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Destination Airport",
-   "options": "Airport",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "destination_airport.code",
+   "fetch_from": "flight.destination_airport_code",
    "fieldname": "destination_airport_code",
    "fieldtype": "Data",
    "label": "Destination Airport Code",
    "read_only": 1
   },
   {
-   "fieldname": "flight_details_section",
-   "fieldtype": "Section Break",
-   "label": "Flight Details"
-  },
-  {
    "fieldname": "flight",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Flight",
-   "options": "Airplane",
-   "reqd": 1
-  },
-  {
-   "fieldname": "departure_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Departure Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "departure_time",
-   "fieldtype": "Time",
-   "label": "Departure Time",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_3",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "duration_of_flight",
-   "fieldtype": "Duration",
-   "label": "Duration of Flight",
+   "options": "Airplane Flight",
    "reqd": 1
   },
   {
@@ -133,13 +82,93 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "add_ons",
+   "fieldtype": "Table",
+   "label": "Add Ons",
+   "options": "Airplane Ticket Add-on Item"
+  },
+  {
+   "fieldname": "flight_price",
+   "fieldtype": "Currency",
+   "label": "Flight Price",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "fetch_from": "flight.date_of_departure",
+   "fieldname": "date_of_departure",
+   "fieldtype": "Date",
+   "label": "Date of Departure",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "flight.duration",
+   "fieldname": "duration",
+   "fieldtype": "Duration",
+   "label": "Duration",
+   "reqd": 1
+  },
+  {
+   "fieldname": "seat",
+   "fieldtype": "Data",
+   "label": "Seat"
+  },
+  {
+   "fieldname": "section_break_eja8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_zhdc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_csoo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "departure_details_section",
+   "fieldtype": "Section Break",
+   "label": "Departure Details"
+  },
+  {
+   "fetch_from": "flight.time_of_departure",
+   "fieldname": "time_of_departure",
+   "fieldtype": "Time",
+   "label": "Time of Departure",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_wela",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_kdoq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_cyrp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ltxr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_abkv",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-09-30 13:39:53.553551",
+ "modified": "2025-10-13 17:54:28.534650",
  "modified_by": "Administrator",
  "module": "Airport",
  "name": "Airplane Ticket",
