@@ -26,8 +26,8 @@ class AirplaneTicket(Document):
 	def validate(self):
 		"""Validate ticket data and calculate total amount"""
 		self.check_duplicate_addons()
-
 		self.calculate_total_amount()
+		self.check_capacity()
 
 	def calculate_total_amount(self):
 		"""Calculate total amount from flight price and add-ons"""
@@ -64,3 +64,11 @@ class AirplaneTicket(Document):
 			"Boarded": "green"
 		}
 		return status_color.get(doc.status, "gray")
+
+	def check_capacity(self):
+		"""Check if the flight has available seats"""
+		airplane = frappe.db.get_value("Airplane Flight", self.flight, "airplane")
+		capacity = frappe.db.get_value("Airplane", airplane, "capacity")
+		booked_seats = frappe.db.count("Airplane Ticket", {"flight": self.flight, "docstatus": ['<', 2]})
+		if booked_seats >= capacity:
+			frappe.throw(f'Cannot create ticket. Flight {self.flight} has reached maximum capacity of {capacity} seats.')
