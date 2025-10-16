@@ -26,6 +26,7 @@
   "time_of_departure",
   "column_break_abkv",
   "duration",
+  "gate_number",
   "section_break_wela",
   "amended_from"
  ],
@@ -162,13 +163,20 @@
   {
    "fieldname": "column_break_abkv",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "flight.gate_number",
+   "fieldname": "gate_number",
+   "fieldtype": "Data",
+   "label": "Gate Number",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-15 14:38:24.778701",
+ "modified": "2025-10-16 09:52:19.658831",
  "modified_by": "Administrator",
  "module": "Airport",
  "name": "Airplane Ticket",
