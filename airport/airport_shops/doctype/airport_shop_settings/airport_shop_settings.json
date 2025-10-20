@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "creation": "2025-10-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "rent_settings_section",
+  "default_rent_amount",
+  "column_break_xyz1",
+  "enable_rent_reminders"
+ ],
+ "fields": [
+  {
+   "fieldname": "rent_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Rent Settings"
+  },
+  {
+   "description": "Default rent amount to be used when creating new rent contracts",
+   "fieldname": "default_rent_amount",
+   "fieldtype": "Currency",
+   "label": "Default Rent Amount"
+  },
+  {
+   "default": "1",
+   "description": "Enable automatic monthly rent reminder emails to tenants",
+   "fieldname": "enable_rent_reminders",
+   "fieldtype": "Check",
+   "label": "Enable Rent Reminders"
+  },
+  {
+   "fieldname": "column_break_xyz1",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-10-20 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Airport Shops",
+ "name": "Airport Shop Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
