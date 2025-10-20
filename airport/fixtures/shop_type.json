@@ -1,0 +1,23 @@
+[
+ {
+  "doctype": "Shop Type",
+  "name": "Stall",
+  "type_name": "Stall",
+  "enabled": 1,
+  "description": "Small retail stall for quick service items"
+ },
+ {
+  "doctype": "Shop Type",
+  "name": "Walk-through",
+  "type_name": "Walk-through",
+  "enabled": 1,
+  "description": "Walk-through shop accessible from multiple sides"
+ },
+ {
+  "doctype": "Shop Type",
+  "name": "Normal",
+  "type_name": "Normal",
+  "enabled": 1,
+  "description": "Standard retail shop space"
+ }
+]
