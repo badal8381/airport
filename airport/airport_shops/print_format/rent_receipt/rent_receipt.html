@@ -1,0 +1,240 @@
+<style>
+	.rent-receipt {
+		font-family: 'Arial', sans-serif;
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 40px;
+		border: 2px solid #333;
+	}
+
+	.receipt-header {
+		text-align: center;
+		border-bottom: 3px solid #667eea;
+		padding-bottom: 20px;
+		margin-bottom: 30px;
+	}
+
+	.receipt-header h1 {
+		color: #667eea;
+		font-size: 32px;
+		margin: 0;
+		text-transform: uppercase;
+	}
+
+	.receipt-header .subtitle {
+		color: #666;
+		font-size: 14px;
+		margin-top: 5px;
+	}
+
+	.receipt-number {
+		text-align: right;
+		font-size: 14px;
+		color: #666;
+		margin-bottom: 20px;
+	}
+
+	.receipt-body {
+		margin: 30px 0;
+	}
+
+	.info-section {
+		margin-bottom: 25px;
+	}
+
+	.info-section h3 {
+		color: #667eea;
+		font-size: 16px;
+		margin-bottom: 10px;
+		border-bottom: 2px solid #667eea;
+		padding-bottom: 5px;
+	}
+
+	.info-row {
+		display: flex;
+		justify-content: space-between;
+		padding: 8px 0;
+		border-bottom: 1px dotted #ddd;
+	}
+
+	.info-row .label {
+		font-weight: bold;
+		color: #333;
+	}
+
+	.info-row .value {
+		color: #666;
+	}
+
+	.amount-section {
+		background: #f9f9f9;
+		padding: 20px;
+		border-radius: 8px;
+		margin: 30px 0;
+		border-left: 4px solid #667eea;
+	}
+
+	.amount-row {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 0;
+		font-size: 18px;
+	}
+
+	.amount-row.total {
+		border-top: 2px solid #333;
+		margin-top: 10px;
+		padding-top: 15px;
+		font-weight: bold;
+		font-size: 24px;
+		color: #667eea;
+	}
+
+	.signature-section {
+		margin-top: 60px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.signature-box {
+		text-align: center;
+		width: 45%;
+	}
+
+	.signature-line {
+		border-top: 1px solid #333;
+		margin-top: 50px;
+		padding-top: 5px;
+		font-size: 12px;
+	}
+
+	.footer-note {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 11px;
+		color: #999;
+		border-top: 1px solid #ddd;
+		padding-top: 15px;
+	}
+
+	.watermark {
+		position: relative;
+	}
+
+	.watermark::after {
+		content: "{{ doc.status }}";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(-45deg);
+		font-size: 100px;
+		color: rgba(0, 0, 0, 0.05);
+		font-weight: bold;
+		text-transform: uppercase;
+		pointer-events: none;
+	}
+</style>
+
+<div class="rent-receipt watermark">
+	<div class="receipt-header">
+		<h1>Rent Receipt</h1>
+		<div class="subtitle">Airport Shop Management System</div>
+	</div>
+
+	<div class="receipt-number">
+		<strong>Receipt No:</strong> {{ doc.name }}<br>
+		<strong>Date:</strong> {{ frappe.utils.formatdate(doc.payment_date) }}
+	</div>
+
+	<div class="receipt-body">
+		<div class="info-section">
+			<h3>Tenant Information</h3>
+			{% set tenant = frappe.get_doc("Tenant", doc.tenant) %}
+			<div class="info-row">
+				<span class="label">Tenant Name:</span>
+				<span class="value">{{ tenant.tenant_name }}</span>
+			</div>
+			{% if tenant.company_name %}
+			<div class="info-row">
+				<span class="label">Company:</span>
+				<span class="value">{{ tenant.company_name }}</span>
+			</div>
+			{% endif %}
+			<div class="info-row">
+				<span class="label">Email:</span>
+				<span class="value">{{ tenant.email }}</span>
+			</div>
+			<div class="info-row">
+				<span class="label">Phone:</span>
+				<span class="value">{{ tenant.phone_number }}</span>
+			</div>
+		</div>
+
+		<div class="info-section">
+			<h3>Shop Details</h3>
+			{% set shop = frappe.get_doc("Shop", doc.shop) %}
+			<div class="info-row">
+				<span class="label">Shop Number:</span>
+				<span class="value">{{ shop.shop_number }}</span>
+			</div>
+			{% if shop.shop_name %}
+			<div class="info-row">
+				<span class="label">Shop Name:</span>
+				<span class="value">{{ shop.shop_name }}</span>
+			</div>
+			{% endif %}
+			<div class="info-row">
+				<span class="label">Airport:</span>
+				<span class="value">{{ shop.airport }}</span>
+			</div>
+			<div class="info-row">
+				<span class="label">Area:</span>
+				<span class="value">{{ shop.area }} sq ft</span>
+			</div>
+		</div>
+
+		<div class="info-section">
+			<h3>Contract Details</h3>
+			{% if doc.contract %}
+			{% set contract = frappe.get_doc("Rent Contract", doc.contract) %}
+			<div class="info-row">
+				<span class="label">Contract Number:</span>
+				<span class="value">{{ contract.name }}</span>
+			</div>
+			<div class="info-row">
+				<span class="label">Contract Period:</span>
+				<span class="value">{{ frappe.utils.formatdate(contract.start_date) }} to {{ frappe.utils.formatdate(contract.end_date) }}</span>
+			</div>
+			{% endif %}
+		</div>
+
+		<div class="amount-section">
+			<div class="info-row">
+				<span class="label">Payment Method:</span>
+				<span class="value">{{ doc.payment_method }}</span>
+			</div>
+			<div class="amount-row total">
+				<span>Amount Paid:</span>
+				<span>{{ frappe.utils.fmt_money(doc.amount, currency="INR") }}</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="signature-section">
+		<div class="signature-box">
+			<div class="signature-line">
+				Tenant Signature
+			</div>
+		</div>
+		<div class="signature-box">
+			<div class="signature-line">
+				Authorized Signatory
+			</div>
+		</div>
+	</div>
+
+	<div class="footer-note">
+		This is a computer-generated receipt and does not require a physical signature.<br>
+		For any queries, please contact Airport Management.
+	</div>
+</div>
