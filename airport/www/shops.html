@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ title }}</title>
+	<link rel="stylesheet" href="/assets/airport/css/picnic.css">
+</head>
+<body style="margin: 0; background: #f8f9fa;">
+	<header style="text-align: center; padding: 3rem 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+		<h1 style="margin: 0 0 0.5rem 0;">{{ title }}</h1>
+		<p style="margin: 0; opacity: 0.9;">Browse available shop spaces at our airports</p>
+	</header>
+
+	<main style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
+		{% if shops %}
+		<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+			{% for shop in shops %}
+			<article class="card">
+				<header>
+					<h3 style="margin: 0 0 0.5rem 0;">{{ shop.shop_name or shop.shop_number }}</h3>
+					<span class="label {% if shop.status == 'Available' %}success{% else %}error{% endif %}">{{ shop.status }}</span>
+				</header>
+				<p><strong>Shop Number:</strong> {{ shop.shop_number }}</p>
+				<p><strong>Airport:</strong> {{ shop.airport_name or shop.airport }}</p>
+				{% if shop.shop_type %}
+				<p><strong>Type:</strong> {{ shop.shop_type }}</p>
+				{% endif %}
+				<p><strong>Area:</strong> {{ shop.area }} sq ft</p>
+				<footer>
+					<a href="/shop?id={{ shop.name }}" class="button">View Details</a>
+				</footer>
+			</article>
+			{% endfor %}
+		</div>
+		{% else %}
+		<article class="card" style="text-align: center; padding: 3rem;">
+			<h3>No shops available at the moment.</h3>
+		</article>
+		{% endif %}
+	</main>
+</body>
+</html>

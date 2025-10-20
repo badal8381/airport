@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Express Interest - Shop Lead</title>
+	<link rel="stylesheet" href="/assets/airport/css/picnic.css">
+</head>
+<body style="margin: 0; background: #f8f9fa;">
+	<main style="max-width: 700px; margin: 0 auto; padding: 2rem 1rem;">
+		<p style="margin-bottom: 1.5rem;">
+			<a href="/shops" style="color: #667eea; text-decoration: none;">← Back to All Shops</a>
+		</p>
+
+		<article class="card" style="text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin-bottom: 2rem;">
+			<header>
+				<h1 style="color: white; margin: 0;">Express Your Interest</h1>
+			</header>
+			<p>Fill out the form below to express your interest in leasing a shop space.</p>
+		</article>
+
+		{% if shop %}
+		<article class="card" style="margin-bottom: 2rem;">
+			<header>
+				<h4>Shop Details</h4>
+			</header>
+			<p><strong>Shop Number:</strong> {{ shop.shop_number }}</p>
+			{% if shop.shop_name %}
+			<p><strong>Shop Name:</strong> {{ shop.shop_name }}</p>
+			{% endif %}
+			<p><strong>Area:</strong> {{ shop.area }} sq ft</p>
+		</article>
+		{% endif %}
+
+		<article class="card">
+			<header>
+				<h4>Contact Information</h4>
+			</header>
+			<form id="shop-lead-form" method="POST" action="/api/method/airport.airport_shops.doctype.shop_lead.shop_lead.create_shop_lead">
+				<input type="hidden" name="csrf_token" value="{{ frappe.session.csrf_token }}">
+				<input type="hidden" name="shop_interest" value="{{ shop_name }}">
+
+				<label style="display: block; margin-bottom: 1rem;">
+					<span style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Full Name *</span>
+					<input type="text" name="full_name" required>
+				</label>
+
+				<label style="display: block; margin-bottom: 1rem;">
+					<span style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Email *</span>
+					<input type="email" name="email" required>
+				</label>
+
+				<label style="display: block; margin-bottom: 1rem;">
+					<span style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Phone *</span>
+					<input type="tel" name="phone" required>
+				</label>
+
+				<label style="display: block; margin-bottom: 1rem;">
+					<span style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Company Name</span>
+					<input type="text" name="company_name">
+				</label>
+
+				<label style="display: block; margin-bottom: 1rem;">
+					<span style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Message</span>
+					<textarea name="message" placeholder="Tell us about your business and requirements..." style="min-height: 100px;"></textarea>
+				</label>
+
+				<button type="submit" class="button" style="width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+					Submit Interest
+				</button>
+			</form>
+		</article>
+	</main>
+
+	<script>
+		document.getElementById('shop-lead-form').addEventListener('submit', function(e) {
+			e.preventDefault();
+
+			const formData = new FormData(this);
+			const data = Object.fromEntries(formData);
+
+			fetch('/api/method/airport.airport_shops.doctype.shop_lead.shop_lead.create_shop_lead', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-Frappe-CSRF-Token': data.csrf_token
+				},
+				body: JSON.stringify(data)
+			})
+			.then(response => response.json())
+			.then(result => {
+				if (result.message) {
+					alert('Thank you! Your interest has been submitted successfully. We will contact you soon.');
+					window.location.href = '/shops';
+				} else {
+					alert('There was an error submitting your form. Please try again.');
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+				alert('There was an error submitting your form. Please try again.');
+			});
+		});
+	</script>
+</body>
+</html>
