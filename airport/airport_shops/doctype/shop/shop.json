@@ -6,6 +6,8 @@
  "engine": "InnoDB",
  "field_order": [
   "shop_number",
+  "shop_name",
+  "shop_type",
   "status",
   "area",
   "column_break_iuyc",
@@ -18,6 +20,20 @@
    "fieldtype": "Data",
    "label": "Shop Number",
    "reqd": 1
+  },
+  {
+   "fieldname": "shop_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Shop Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "shop_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Shop Type",
+   "options": "Shop Type"
   },
   {
    "fieldname": "status",
@@ -56,7 +72,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-20 10:15:52.635679",
+ "modified": "2025-10-20 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Airport Shops",
  "name": "Shop",
