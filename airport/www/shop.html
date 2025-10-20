@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ title }} - Shop Details</title>
+	<link rel="stylesheet" href="/assets/airport/css/picnic.css">
+</head>
+<body style="margin: 0; background: #f8f9fa;">
+	<main style="max-width: 1000px; margin: 0 auto; padding: 2rem 1rem;">
+		<p style="margin-bottom: 1.5rem;">
+			<a href="/shops" style="color: #667eea; text-decoration: none;">← Back to All Shops</a>
+		</p>
+
+		<article class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin-bottom: 2rem;">
+			<header>
+				<h1 style="color: white; margin: 0;">{{ shop.shop_name or shop.shop_number }}</h1>
+				<span class="label {% if shop.status == 'Available' %}success{% else %}error{% endif %}">{{ shop.status }}</span>
+			</header>
+		</article>
+
+		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+			<article class="card">
+				<header>
+					<h4>Shop Information</h4>
+				</header>
+				<p><strong>Shop Number:</strong> {{ shop.shop_number }}</p>
+				{% if shop.shop_name %}
+				<p><strong>Shop Name:</strong> {{ shop.shop_name }}</p>
+				{% endif %}
+				{% if shop.shop_type %}
+				<p><strong>Shop Type:</strong> {{ shop.shop_type }}</p>
+				{% endif %}
+				<p><strong>Area:</strong> {{ shop.area }} sq ft</p>
+				<p><strong>Airport:</strong> {{ airport_name or shop.airport }}</p>
+			</article>
+
+			{% if shop.status == "Occupied" and tenant %}
+			<article class="card">
+				<header>
+					<h4>Current Tenant</h4>
+				</header>
+				<p><strong>Tenant Name:</strong> {{ tenant.tenant_name }}</p>
+				{% if tenant.company_name %}
+				<p><strong>Company:</strong> {{ tenant.company_name }}</p>
+				{% endif %}
+				{% if tenant.contact_person %}
+				<p><strong>Contact Person:</strong> {{ tenant.contact_person }}</p>
+				{% endif %}
+			</article>
+
+			{% if contract %}
+			<article class="card">
+				<header>
+					<h4>Contract Details</h4>
+				</header>
+				<p><strong>Monthly Rent:</strong> ₹{{ "{:,.2f}".format(contract.rent_amount) }}</p>
+				<p><strong>Contract Start:</strong> {{ contract.start_date }}</p>
+				<p><strong>Contract End:</strong> {{ contract.end_date }}</p>
+			</article>
+			{% endif %}
+			{% endif %}
+		</div>
+
+		{% if shop.status == "Available" %}
+		<article class="card" style="text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+			<header>
+				<h3 style="color: white; margin: 0 0 1rem 0;">Interested in Leasing This Shop?</h3>
+			</header>
+			<p style="margin-bottom: 1.5rem;">Submit your details and we'll get back to you shortly.</p>
+			<a href="/shop-lead?shop={{ shop.name }}" class="button" style="background: white; color: #667eea;">
+				Express Interest →
+			</a>
+		</article>
+		{% endif %}
+	</main>
+</body>
+</html>
