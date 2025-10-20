@@ -1,0 +1,72 @@
+meta {
+  name: POST Create New Shop
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/api/resource/Shop
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: token {{api_key}}:{{api_secret}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "shop_number": "S999",
+    "shop_name": "Test Shop",
+    "shop_type": "Normal",
+    "status": "Available",
+    "area": 300,
+    "airport": "AIRPORT-001"
+  }
+}
+
+docs {
+  # Create New Shop
+
+  This endpoint creates a new shop in the system.
+
+  ## Required Fields
+
+  - `shop_number`: Unique shop identifier
+  - `shop_name`: Name of the shop
+  - `status`: Either "Available" or "Occupied"
+  - `area`: Shop area in square feet
+  - `airport`: Link to Airport doctype
+
+  ## Optional Fields
+
+  - `shop_type`: Link to Shop Type (must be enabled)
+  - `tenant`: Link to Tenant (if occupied)
+
+  ## Example Response (Success)
+
+  ```json
+  {
+    "data": {
+      "name": "SHOP-999",
+      "shop_number": "S999",
+      "shop_name": "Test Shop",
+      "shop_type": "Normal",
+      "status": "Available",
+      "area": 300,
+      "airport": "AIRPORT-001"
+    }
+  }
+  ```
+
+  ## Error Response
+
+  ```json
+  {
+    "exception": "frappe.exceptions.DuplicateEntryError",
+    "exc_type": "DuplicateEntryError",
+    "_server_messages": "Shop with this number already exists"
+  }
+  ```
+}

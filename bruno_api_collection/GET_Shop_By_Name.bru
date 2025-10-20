@@ -1,0 +1,43 @@
+meta {
+  name: GET Shop by Name
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/api/resource/Shop/SHOP-001
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: token {{api_key}}:{{api_secret}}
+  Content-Type: application/json
+}
+
+docs {
+  # Get Shop by Name
+
+  Retrieve a specific shop by its document name.
+
+  Replace `SHOP-001` in the URL with the actual shop name.
+
+  ## Example Response
+
+  ```json
+  {
+    "data": {
+      "name": "SHOP-001",
+      "shop_number": "S101",
+      "shop_name": "Coffee Corner",
+      "shop_type": "Stall",
+      "status": "Available",
+      "area": 250.5,
+      "airport": "AIRPORT-001",
+      "tenant": null,
+      "creation": "2025-10-20 12:00:00",
+      "modified": "2025-10-20 12:00:00"
+    }
+  }
+  ```
+}

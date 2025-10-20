@@ -1,0 +1,32 @@
+meta {
+  name: GET Shops - Filtered by Status
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/api/resource/Shop?fields=["shop_number","shop_name","status","area","airport"]&filters=[["status","=","Available"]]
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: token {{api_key}}:{{api_secret}}
+  Content-Type: application/json
+}
+
+docs {
+  # Get Filtered Shops
+
+  This endpoint retrieves shops filtered by status.
+
+  ## Example: Get Only Available Shops
+
+  Filter: `[["status","=","Available"]]`
+
+  ## Other Filter Examples
+
+  - Get shops in specific airport: `[["airport","=","AIRPORT-001"]]`
+  - Get shops by type: `[["shop_type","=","Stall"]]`
+  - Multiple filters: `[["status","=","Available"],["area",">",200]]`
+}
