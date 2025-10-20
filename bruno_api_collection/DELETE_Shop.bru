@@ -1,0 +1,43 @@
+meta {
+  name: DELETE Shop
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{base_url}}/api/resource/Shop/SHOP-999
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: token {{api_key}}:{{api_secret}}
+  Content-Type: application/json
+}
+
+docs {
+  # Delete Shop
+
+  Delete a shop from the system.
+
+  **Warning:** This action cannot be undone.
+
+  Replace `SHOP-999` with the shop name you want to delete.
+
+  ## Example Response (Success)
+
+  ```json
+  {
+    "message": "ok"
+  }
+  ```
+
+  ## Error Response (Shop Not Found)
+
+  ```json
+  {
+    "exception": "frappe.exceptions.DoesNotExistError",
+    "_server_messages": "Shop SHOP-999 not found"
+  }
+  ```
+}

@@ -1,0 +1,48 @@
+meta {
+  name: GET All Shops
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/api/resource/Shop?fields=["*"]
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: token {{api_key}}:{{api_secret}}
+  Content-Type: application/json
+}
+
+docs {
+  # Get All Shops
+
+  This endpoint retrieves all shops with all fields.
+
+  ## Query Parameters
+
+  - `fields`: Array of field names to include (use ["*"] for all fields)
+  - `filters`: JSON array of filters (e.g., [["status", "=", "Available"]])
+  - `limit_page_length`: Number of records to return (default: 20)
+  - `limit_start`: Offset for pagination
+
+  ## Example Response
+
+  ```json
+  {
+    "data": [
+      {
+        "name": "SHOP-001",
+        "shop_number": "S101",
+        "shop_name": "Coffee Corner",
+        "shop_type": "Stall",
+        "status": "Available",
+        "area": 250.5,
+        "airport": "AIRPORT-001",
+        "tenant": null
+      }
+    ]
+  }
+  ```
+}
