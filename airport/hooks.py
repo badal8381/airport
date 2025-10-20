@@ -143,23 +143,11 @@ app_license = "apache-2.0"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"airport.tasks.all"
-# 	],
-# 	"daily": [
-# 		"airport.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"airport.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"airport.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"airport.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"monthly": [
+		"airport.airport_shops.doctype.rent_contract.rent_contract.send_monthly_rent_reminders"
+	],
+}
 
 # Testing
 # -------
@@ -244,4 +232,9 @@ app_license = "apache-2.0"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
+
+# Fixtures
+# --------
+# Fixtures are used to pre-populate the database with master data
+fixtures = ["airport/fixtures/shop_type.json"]
 
