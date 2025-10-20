@@ -1,0 +1,22 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2025-10-20 00:00:00.000000",
+ "doctype": "Report",
+ "is_standard": "Yes",
+ "json": "{}",
+ "letter_head": "",
+ "modified": "2025-10-20 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Airport Shops",
+ "name": "Shops by Airport",
+ "owner": "Administrator",
+ "ref_doctype": "Shop",
+ "report_name": "Shops by Airport",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}
