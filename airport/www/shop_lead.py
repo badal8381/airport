@@ -45,7 +45,7 @@ def create_shop_lead(**kwargs):
 			"status": "New",
 			"lead_date": frappe.utils.today()
 		})
-
+		
 		lead.insert(ignore_permissions=True)
 		frappe.db.commit()
 
@@ -57,4 +57,8 @@ def create_shop_lead(**kwargs):
 
 	except Exception as e:
 		frappe.logger().error(f"Error creating shop lead: {str(e)}")
-		frappe.throw(_("Error creating shop lead. Please try again."))
+		frappe.log_error(message=frappe.get_traceback(), title="Error creating shop lead")
+		return {
+			"success": False,
+			"message": f"Error creating shop lead: {str(e)}"
+		}

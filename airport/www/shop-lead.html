@@ -32,36 +32,36 @@
 		</article>
 		{% endif %}
 
-		<article class="card">
+		<article class="card" style="margin-bottom: 2rem; padding: 1rem;">
 			<header>
 				<h4>Contact Information</h4>
 			</header>
-			<form id="shop-lead-form" method="POST" action="/api/method/airport.airport_shops.doctype.shop_lead.shop_lead.create_shop_lead">
+			<form id="shop-lead-form" method="POST" action="/api/method/airport.www.shop_lead.create_shop_lead">
 				<input type="hidden" name="csrf_token" value="{{ frappe.session.csrf_token }}">
 				<input type="hidden" name="shop_interest" value="{{ shop_name }}">
 
-				<label style="display: block; margin-bottom: 1rem;">
-					<span style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Full Name *</span>
+				<label>
+					Full Name *
 					<input type="text" name="full_name" required>
 				</label>
 
-				<label style="display: block; margin-bottom: 1rem;">
-					<span style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Email *</span>
+				<label>
+					Email *
 					<input type="email" name="email" required>
 				</label>
 
-				<label style="display: block; margin-bottom: 1rem;">
-					<span style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Phone *</span>
-					<input type="tel" name="phone" required>
+				<label>
+					Phone *
+					<input type="tel" name="phone" required class="phone-input">
 				</label>
 
-				<label style="display: block; margin-bottom: 1rem;">
-					<span style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Company Name</span>
+				<label>
+					Company Name
 					<input type="text" name="company_name">
 				</label>
 
-				<label style="display: block; margin-bottom: 1rem;">
-					<span style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Message</span>
+				<label>
+					Message
 					<textarea name="message" placeholder="Tell us about your business and requirements..." style="min-height: 100px;"></textarea>
 				</label>
 
@@ -79,7 +79,7 @@
 			const formData = new FormData(this);
 			const data = Object.fromEntries(formData);
 
-			fetch('/api/method/airport.airport_shops.doctype.shop_lead.shop_lead.create_shop_lead', {
+			fetch('/api/method/airport.www.shop_lead.create_shop_lead', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -89,11 +89,19 @@
 			})
 			.then(response => response.json())
 			.then(result => {
-				if (result.message) {
+				console.log('Full response:', result);
+				
+				// Handle the nested response structure
+				const responseData = result.message || result;
+				console.log('Response data:', responseData);
+				
+				if (responseData && responseData.success && responseData.message) {
+					console.log('Success! Redirecting...');
 					alert('Thank you! Your interest has been submitted successfully. We will contact you soon.');
 					window.location.href = '/shops';
 				} else {
 					alert('There was an error submitting your form. Please try again.');
+					console.error('Form submission error:', result);
 				}
 			})
 			.catch(error => {
