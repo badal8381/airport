@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "creation": "2025-10-24 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "due_date",
+  "scheduled_amount",
+  "column_break_xyzt",
+  "payment_status",
+  "paid_amount",
+  "rent_payment",
+  "section_break_remarks",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Due Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "scheduled_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Scheduled Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_xyzt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Payment Status",
+   "options": "Pending\nPaid\nPartially Paid\nOverdue",
+   "reqd": 1
+  },
+  {
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rent_payment",
+   "fieldtype": "Link",
+   "label": "Rent Payment",
+   "options": "Rent Payment",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_remarks",
+   "fieldtype": "Section Break",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Text",
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-10-24 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Airport Shops",
+ "name": "Rent Payment Schedule",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

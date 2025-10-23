@@ -13,7 +13,9 @@
   "rent_amount",
   "start_date",
   "end_date",
-  "status"
+  "status",
+  "section_break_payment_schedule",
+  "payment_schedule"
  ],
  "fields": [
   {
@@ -64,6 +66,17 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "Active\nExpired\nTerminated"
+  },
+  {
+   "fieldname": "section_break_payment_schedule",
+   "fieldtype": "Section Break",
+   "label": "Payment Schedule"
+  },
+  {
+   "fieldname": "payment_schedule",
+   "fieldtype": "Table",
+   "label": "Payment Schedule",
+   "options": "Rent Payment Schedule"
   }
  ],
  "grid_page_length": 50,
