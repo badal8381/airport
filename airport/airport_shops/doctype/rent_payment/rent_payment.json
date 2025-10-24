@@ -13,7 +13,8 @@
   "amount",
   "payment_method",
   "payment_date",
-  "status"
+  "status",
+  "payment_schedule_entry"
  ],
  "fields": [
   {
@@ -69,6 +70,13 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "Paid\nPending\nFailed"
+  },
+  {
+   "fieldname": "payment_schedule_entry",
+   "fieldtype": "Data",
+   "label": "Payment Schedule Entry",
+   "read_only": 1,
+   "hidden": 1
   }
  ],
  "grid_page_length": 50,

@@ -147,6 +147,9 @@ scheduler_events = {
 	"monthly": [
 		"airport.airport_shops.doctype.rent_contract.rent_contract.send_monthly_rent_reminders"
 	],
+	"daily": [
+		"airport.airport_shops.doctype.rent_contract.rent_contract.mark_overdue_payments"
+	],
 }
 
 # Testing
